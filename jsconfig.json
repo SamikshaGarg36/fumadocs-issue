@@ -81,7 +81,8 @@
     "@/components/magicui/border-beam.jsx",
     "pages/blog/index.js",
     "pages/blog/[slug]/page.js",
-    "lib/docs-source.js"
+    "lib/docs-source.js",
+    "content-collections.js"
   ],
   "exclude": ["node_modules"]
 }

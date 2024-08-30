@@ -14,18 +14,11 @@ const docs = defineCollection({
   include: "**/*.mdx",
   schema: (z) => ({
     title: z.string(),
-    description: z.string(),
-    icon: z.string(),
-    full: z.boolean(),
+    description: z.string().optional(),
+    icon: z.string().optional(),
+    full: z.boolean().optional(),
   }),
-  transform: async (document, context) => {
-    // @ts-ignore
-    const mdx = await compileMDX(context, document);
-    return {
-      ...document,
-      mdx,
-    };
-  },
+  transform: transformMDX,
 });
 
 const metas = defineCollection({
@@ -37,5 +30,6 @@ const metas = defineCollection({
 });
 
 export default defineConfig({
+  // @ts-expect-error
   collections: [metas, docs],
 });
